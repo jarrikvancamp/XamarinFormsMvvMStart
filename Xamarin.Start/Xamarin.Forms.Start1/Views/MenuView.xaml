@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:dataTemplateSelectors="clr-namespace:Xamarin.Forms.Start1.DataTemplateSelectors;assembly=Xamarin.Forms.Start1"
+			 xmlns:behaviors="clr-namespace:Xamarin.Forms.Start1.Behaviors;assembly=Xamarin.Forms.Start1"
+			 BackgroundColor="#FFFFFF"
+			 Title="Menu"
+			 x:Class="Xamarin.Forms.Start1.Views.MenuView">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<DataTemplate x:Key="menuItemTemplate">
+				<ViewCell>
+					<Grid Padding="16,0"
+						  ColumnSpacing="16">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<Image Source="{Binding Icon}"
+							   HeightRequest="25"
+							   WidthRequest="25"
+							   VerticalOptions="CenterAndExpand" />
+						<Label Grid.Column="1"
+							   Text="{Binding Title}"
+							   VerticalTextAlignment="Center"
+							   TextColor="#000" />
+					</Grid>
+				</ViewCell>
+			</DataTemplate>
+			<DataTemplate x:Key="headerTemplate">
+				<ViewCell IsEnabled="False">
+					<StackLayout>
+						<BoxView HeightRequest="1"
+								 Color="#999" />
+						<Label Margin="16,0,16,8"
+							   Text="{Binding Title}"
+							   VerticalOptions="EndAndExpand"
+							   TextColor="#666" />
+					</StackLayout>
+				</ViewCell>
+			</DataTemplate>
+			<dataTemplateSelectors:MenuDataTemplateSelector x:Key="menuDataTemplateSelector"
+															HeaderTemplate="{StaticResource headerTemplate}"
+															MenuItemTemplate="{StaticResource menuItemTemplate}" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<ListView Header="{Binding .}"
+			  SeparatorVisibility="None"
+			  ItemTemplate="{StaticResource menuDataTemplateSelector}"
+			  ItemsSource="{Binding MenuItems, Mode=TwoWay}"
+			  SelectedItem="{Binding SelectedHomeMenuItem, Mode=TwoWay}"
+			  behaviors:MenuItemTappedCommandListView.ItemTappedCommand="{Binding NavigateToCommand}">
+		<ListView.HeaderTemplate>
+			<DataTemplate>
+				<Image Source="logo"
+					   HeightRequest="200"
+					   Aspect="AspectFit" />
+			</DataTemplate>
+		</ListView.HeaderTemplate>
+	</ListView>
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="Xamarin.Start.Core.Views.LoadingView">
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+		
+		<Label Grid.Row="1"
+			   Text="Loading"
+			   TextColor="Black"
+			   FontSize="Large"
+			   HorizontalOptions="Center"
+			   VerticalOptions="End"></Label>
+
+		<ActivityIndicator Grid.Row="2"
+						   HorizontalOptions="Center"
+						   IsRunning="{Binding IsLoading}"
+						   IsVisible="{Binding IsLoading}"
+						   VerticalOptions="Start"
+						   Color="Black"></ActivityIndicator>
+	</Grid>
+</ContentPage>

@@ -1,0 +1,18 @@
+﻿using System;
+using System.Globalization;
+using Xamarin.Forms;
+
+namespace Xamarin.Start.Core.Converters {
+	public class ImageUrlConverter : IValueConverter {
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+			if(value is string) {
+				return $"{Constants.ApiConstants.ImageUrl}{value as string}";
+			}
+			return null;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+			return null;
+		}
+	}
+}

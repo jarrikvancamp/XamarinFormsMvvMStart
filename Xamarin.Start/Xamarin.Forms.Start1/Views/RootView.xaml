@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+				  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+				  xmlns:ctr="clr-namespace:Xamarin.Forms.Start1.Views;assembly=Xamarin.Forms.Start1"
+				  x:Class="Xamarin.Forms.Start1.Views.RootView">
+	<MasterDetailPage.Master>
+		<ctr:MenuView BindingContext="{Binding MenuViewModel}" />
+	</MasterDetailPage.Master>
+	<MasterDetailPage.Detail>
+		<ContentPage BackgroundColor="Transparent" />
+	</MasterDetailPage.Detail>
+</MasterDetailPage>
